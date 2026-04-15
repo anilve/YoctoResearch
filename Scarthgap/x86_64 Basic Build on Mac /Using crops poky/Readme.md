@@ -100,4 +100,30 @@ You will see output like this:
  >> meta-poky            <br>
  >> meta-yocto-bsp       = "scarthgap:8643f911602949518c5c5474726b49f943e36b83" <br>
 
+The build could take upto 7-8 hours when run for the first time.
+
+## Once done, where are the files available?
+
+The output of the bitbake command is sent into the temp directory's deploy subdirectory.
+Since we have only one hardware selected as output in the local.conf, you can find the built files here: 
+> /home/pokyuser/tempdir/deploy/images/qemux86-64
+
+Here is the list of files that were generated for me:
+> pokyuser@eee20d175a47:~/tempdir/deploy/images/qemux86-64$ ls -aa
+
+    > -rw-r--r-- 2 pokyuser pokyuser  12366848 Apr 15 01:11 bzImage--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.bin
+
+    > -rw-r--r-- 1 pokyuser pokyuser  39829504 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.ext4
+
+    > -rw-r--r-- 1 pokyuser pokyuser      1250 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.manifest
+
+    > -rw-r--r-- 1 pokyuser pokyuser      1740 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.qemuboot.conf
+
+    > -rw-r--r-- 1 pokyuser pokyuser    156811 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.spdx.tar.zst
+
+    > -rw-r--r-- 1 pokyuser pokyuser  18278854 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.tar.bz2
+
+    > -rw-r--r-- 1 pokyuser pokyuser    214835 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.testdata.json
+    
+    > -rw-r--r-- 2 pokyuser pokyuser 199279892 Apr 15 01:12 modules--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.tgz
 
