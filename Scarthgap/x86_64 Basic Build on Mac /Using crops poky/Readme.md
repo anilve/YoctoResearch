@@ -1,14 +1,14 @@
-# Build a Yocto image using crops/poky docker on Mac
+# Building a x86 Linux image on MAC using crops/poky docker
 
 ## Setup the hardware?
-The build is going to be done on a MAC mini with Apple Silicon
+The build is going to be done on a MAC mini with Apple Silicon.
 
-Make sure that Docker Desktop is installed and running the latest verssion.
+Make sure that Docker Desktop is installed and running the latest version.
 
-Download the iamge to use:
+Download the image to use:
 > docker pull crops/poky:ubuntu-22.04
 
-Once that is complere, check if the image is downloaded:
+Once that is complete, check if the image is downloaded:
 > docker images
 
 Output looks like this
@@ -25,16 +25,16 @@ Use this command to start the docker image
 
 > docker run -it --platform linux/amd64 --name my-poky-container -v /Users/anilve/code/YoctoSamples/simplepoky:/workdir crops/poky:ubuntu-22.04 /bin/bash
 
-Lets explain this command:
+Explaining this command:
 1. docker run command is to run an image
 2. --it is saying we want an interactive terminal
-3. --platform linx/amd64 is specifically for the MAC hardware running on Apple Silicon. That is a AMD based hardware. If you do not add this, it assume a Intel based x86 hardware and you get errors on the MAC.
+3. --platform linux/amd64 is specifically for the MAC hardware running on Apple Silicon. That is a ARM based hardware. If you do not add this, it assume a Intel based x86 hardware and you get errors on the MAC.
 4. --name gives the name to th container when it is running
 5. -v (local directory on workstation):(directory to map on the container). This is a local directory on your workstation that is mapped to a shared directory on the linux container. Makes it easy for disk space to grow as you get git code and also compile it.
 6. crops/poky:ubuntu-22.04 is the name of the image to use.
 7. /bin/bash is the script to use when the container terminal starts up.
 
-## Settip up poky and bitbake.
+## Setting up poky and bitbake.
 
 Change to the workdir:
 > cd /workdir
@@ -50,10 +50,10 @@ Initialize the poky builder:
 
 A new directory called build is created under the /workdir/poky
 
-This has also setup bitbaKe with the path and directories needed.
-> /workfir/poky/build/conf directory has configuration files.
+This has also setup bitbake with the path and directories needed.
+> /workdir/poky/build/conf directory has configuration files.
     >> bblayers.conf - which layers are included in the BB. <br>
-	>> local.conf - Various settings including the default machine we are compiling for. Set to qemux86-64
+	>> local.conf - Various settings including the default machine we are compiling for. Leaving the default as qemux86-64.
 
 On a Mac, the shared location is not case sensitive and you will get an error. You can resolve this two ways:
 1. Create a new disk that is case sensitive
@@ -109,21 +109,21 @@ Since we have only one hardware selected as output in the local.conf, you can fi
 > /home/pokyuser/tempdir/deploy/images/qemux86-64
 
 Here is the list of files that were generated for me:
-> pokyuser@eee20d175a47:~/tempdir/deploy/images/qemux86-64$ ls -aa
+> pokyuser@eee20d175a47:~/tempdir/deploy/images/qemux86-64$ ls -al
 
-    > -rw-r--r-- 2 pokyuser pokyuser  12366848 Apr 15 01:11 bzImage--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.bin
+    > bzImage--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.bin
 
-    > -rw-r--r-- 1 pokyuser pokyuser  39829504 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.ext4
+    > core-image-minimal-qemux86-64.rootfs-20260414200504.ext4
 
-    > -rw-r--r-- 1 pokyuser pokyuser      1250 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.manifest
+    > core-image-minimal-qemux86-64.rootfs-20260414200504.manifest
 
-    > -rw-r--r-- 1 pokyuser pokyuser      1740 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.qemuboot.conf
+    > core-image-minimal-qemux86-64.rootfs-20260414200504.qemuboot.conf
 
-    > -rw-r--r-- 1 pokyuser pokyuser    156811 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.spdx.tar.zst
+    > core-image-minimal-qemux86-64.rootfs-20260414200504.spdx.tar.zst
 
-    > -rw-r--r-- 1 pokyuser pokyuser  18278854 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.tar.bz2
+    > core-image-minimal-qemux86-64.rootfs-20260414200504.tar.bz2
 
-    > -rw-r--r-- 1 pokyuser pokyuser    214835 Apr 15 01:41 core-image-minimal-qemux86-64.rootfs-20260414200504.testdata.json
+    > core-image-minimal-qemux86-64.rootfs-20260414200504.testdata.json
     
-    > -rw-r--r-- 2 pokyuser pokyuser 199279892 Apr 15 01:12 modules--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.tgz
+    > modules--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.tgz
 
