@@ -3,7 +3,7 @@
 This projects is to detail how you can build a Linux image for a x86_64 usage on an Apple MAC Mini that is using Apple Silicon.
 
 ## Key Challenges
-1) The Apple Silicon is AMD based. So lots of commands to run the build fail.
+1) The Apple Silicon is ARM based. So lots of commands to run the build fail.
 2) 
 
 

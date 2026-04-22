@@ -45,6 +45,15 @@ Clone the git code for poky that is labelled as scarthgap
 Once we have cloned the poky, change into the poky directory
 > cd /workdir/poky
 
+### Get the meta directory for arm
+
+By default poky does not have the support for arm hardware. So we need to get the meta layer meta-arm.
+
+Clone the directory from git, and get the scarthgap build
+> git clone -b scarthgap --depth=1 git://git.yoctoproject.org/meta-arm
+
+### Initialize the build environment
+
 Initialize the poky builder:
 > source ./oe-init-build-env
 
@@ -55,6 +64,20 @@ This has also setup bitbake with the path and directories needed.
     >> bblayers.conf - which layers are included in the BB. <br>
 	>> local.conf - Various settings including the default machine we are compiling for. Leaving the default as qemux86-64.
 
+### Add the bitbake layers for arm
+
+Get to the directory with the configurations
+> cd /workdir/poky/build/conf
+
+Add the arm layers
+> bitbake-layers add-layer /workdir/poky/meta-arm/meta-arm-toolchain
+
+> bitbake-layers add-layer /workdir/poky/meta-arm/meta-arm
+
+Make sure that the new layers are available in the bblayers.conf file
+
+### Update the local.conf file
+
 On a Mac, the shared location is not case sensitive and you will get an error. You can resolve this two ways:
 1. Create a new disk that is case sensitive
 2. Setup a temp directory on the docker since that is a case sensitive OS
@@ -62,7 +85,13 @@ On a Mac, the shared location is not case sensitive and you will get an error. Y
 Lets create a new directory /home/pokyuser/tempdir
 > mkdir /home/pokyuser/tempdir
 
-### Update the local conf file
+Mke sure you are in the local conf directory
+> cd /workdir/poky/build/conf
+
+Update the file local.conf
+
+Set the machine to arm:
+> MACHINE = "qemuarm64"
 
 Set the TMPDIR
 > TMPDIR = "/home/pokyuser/tempdir"
@@ -74,6 +103,9 @@ Update the thread and parallel make in local.conf
 > BB_NUMBER_THREADS = "2"
 > PARALLEL_MAKE = "-j 2"
 
+Add the output types to add an ISO
+> IMAGE_FSTYPES += "iso"
+
 ## Run the bitbake command to build
 
 Change to the poky directory:
@@ -81,52 +113,3 @@ Change to the poky directory:
 
 We shall run a basic core minimal build.
 > bitbake core-image-minimal
-
-You will see output like this:
-> Loading cache: 100% <br>
-> Loaded 0 entries from dependency cache. <br>
-> Parsing recipes: 100% <br>
-> Parsing of 920 .bb files complete (0 cached, 920 parsed). 1878 targets, 47 skipped, 0 masked, 0 errors. <br>
-> NOTE: Resolving any missing task queue dependencies <br>
-> <br>
-> Build Configuration:
- >> BB_VERSION           = "2.8.1" <br>
- >> BUILD_SYS            = "x86_64-linux" <br>
- >> NATIVELSBSTRING      = "ubuntu-22.04" <br>
- >> TARGET_SYS           = "x86_64-poky-linux" <br>
- >> MACHINE              = "qemux86-64" <br>
- >> DISTRO               = "poky" <br>
- >> DISTRO_VERSION       = "5.0.17" <br>
- >> TUNE_FEATURES        = "m64 core2" <br>
- >> TARGET_FPU           = "" <br>
- >> meta                 <br>
- >> meta-poky            <br>
- >> meta-yocto-bsp       = "scarthgap:8643f911602949518c5c5474726b49f943e36b83" <br>
-
-The build could take upto 7-8 hours when run for the first time.
-
-## Once done, where are the files available?
-
-The output of the bitbake command is sent into the temp directory's deploy subdirectory.
-Since we have only one hardware selected as output in the local.conf, you can find the built files here: 
-> /home/pokyuser/tempdir/deploy/images/qemux86-64
-
-Here is the list of files that were generated for me:
-> pokyuser@eee20d175a47:~/tempdir/deploy/images/qemux86-64$ ls -al
-
-    > bzImage--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.bin
-
-    > core-image-minimal-qemux86-64.rootfs-20260414200504.ext4
-
-    > core-image-minimal-qemux86-64.rootfs-20260414200504.manifest
-
-    > core-image-minimal-qemux86-64.rootfs-20260414200504.qemuboot.conf
-
-    > core-image-minimal-qemux86-64.rootfs-20260414200504.spdx.tar.zst
-
-    > core-image-minimal-qemux86-64.rootfs-20260414200504.tar.bz2
-
-    > core-image-minimal-qemux86-64.rootfs-20260414200504.testdata.json
-    
-    > modules--6.6.123+git0+17375dce17_af240d7d57-r0-qemux86-64-20260414200504.tgz
-
