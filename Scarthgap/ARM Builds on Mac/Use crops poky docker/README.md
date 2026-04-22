@@ -103,9 +103,6 @@ Update the thread and parallel make in local.conf
 > BB_NUMBER_THREADS = "2"
 > PARALLEL_MAKE = "-j 2"
 
-Add the output types to add an ISO
-> IMAGE_FSTYPES += "iso"
-
 ## Run the bitbake command to build
 
 Change to the poky directory:
@@ -113,3 +110,30 @@ Change to the poky directory:
 
 We shall run a basic core minimal build.
 > bitbake core-image-minimal
+
+You will see output like this:
+> Loading cache: 100% <br>
+> Loaded 0 entries from dependency cache. <br>
+> Parsing recipes: 100% <br>
+> Parsing of 920 .bb files complete (0 cached, 920 parsed). 1878 targets, 47 skipped, 0 masked, 0 errors. <br>
+> NOTE: Resolving any missing task queue dependencies <br>
+> <br>
+> Build Configuration:
+ >> BB_VERSION           = "2.8.1" <br>
+ >> BUILD_SYS            = "x86_64-linux" <br>
+ >> NATIVELSBSTRING      = "ubuntu-22.04" <br>
+ >> TARGET_SYS           = "x86_64-poky-linux" <br>
+ >> MACHINE              = "qemux86-64" <br>
+ >> DISTRO               = "poky" <br>
+ >> DISTRO_VERSION       = "5.0.17" <br>
+ >> TUNE_FEATURES        = "m64 core2" <br>
+ >> TARGET_FPU           = "" <br>
+ >> meta                 <br>
+ >> meta-poky            <br>
+ >> meta-yocto-bsp       = "scarthgap:8643f911602949518c5c5474726b49f943e36b83" <br>
+ >> meta-arm-toolchain   
+ >> meta-arm             = "scarthgap:a81c19915b5b9e71ed394032e9a50fd06919e1cd"
+
+The build could take upto 7-8 hours when run for the first time.
+
+## Once done, where are the files available?
