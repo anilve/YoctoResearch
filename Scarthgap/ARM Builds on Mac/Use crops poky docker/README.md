@@ -29,7 +29,7 @@ Explaining this command:
 1. docker run command is to run an image
 2. --it is saying we want an interactive terminal
 3. --platform linux/amd64 is specifically for the MAC hardware running on Apple Silicon. That is a ARM based hardware. If you do not add this, it assume a Intel based x86 hardware and you get errors on the MAC.
-4. --name gives the name to th container when it is running
+4. --name gives the name to the container when it is running
 5. -v (local directory on workstation):(directory to map on the container). This is a local directory on your workstation that is mapped to a shared directory on the linux container. Makes it easy for disk space to grow as you get git code and also compile it.
 6. crops/poky:ubuntu-22.04 is the name of the image to use.
 7. /bin/bash is the script to use when the container terminal starts up.
@@ -85,7 +85,7 @@ On a Mac, the shared location is not case sensitive and you will get an error. Y
 Lets create a new directory /home/pokyuser/tempdir
 > mkdir /home/pokyuser/tempdir
 
-Mke sure you are in the local conf directory
+Make sure you are in the local conf directory
 > cd /workdir/poky/build/conf
 
 Update the file local.conf
@@ -120,14 +120,9 @@ You will see output like this:
 > <br>
 > Build Configuration:
  >> BB_VERSION           = "2.8.1" <br>
- >> BUILD_SYS            = "x86_64-linux" <br>
  >> NATIVELSBSTRING      = "ubuntu-22.04" <br>
- >> TARGET_SYS           = "x86_64-poky-linux" <br>
- >> MACHINE              = "qemux86-64" <br>
+ >> MACHINE              = "qemuarm64" <br>
  >> DISTRO               = "poky" <br>
- >> DISTRO_VERSION       = "5.0.17" <br>
- >> TUNE_FEATURES        = "m64 core2" <br>
- >> TARGET_FPU           = "" <br>
  >> meta                 <br>
  >> meta-poky            <br>
  >> meta-yocto-bsp       = "scarthgap:8643f911602949518c5c5474726b49f943e36b83" <br>
