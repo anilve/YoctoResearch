@@ -1,4 +1,4 @@
-# Building a x86 Linux image on MAC using crops/poky docker
+# Building a ARM Linux image on MAC using crops/poky docker
 
 ## Setup the hardware?
 The build is going to be done on a MAC mini with Apple Silicon.
@@ -137,3 +137,26 @@ You will see output like this:
 The build could take upto 7-8 hours when run for the first time.
 
 ## Once done, where are the files available?
+
+The output of the bitbake command is sent into the temp directory's deploy subdirectory.
+Since we have only one hardware selected as output in the local.conf, you can find the built files here: 
+> /home/pokyuser/tempdir/deploy/images/qemuarm64
+
+Here is the list of files that were generated for me:
+> ppokyuser@e1c64cdf2632:~/tempdir/deploy/images/qemuarm64$ ls -al
+
+    > core-image-minimal-qemuarm64.rootfs-20260422024341.ext4
+
+    > core-image-minimal-qemuarm64.rootfs-20260422024341.manifest
+
+    > core-image-minimal-qemuarm64.rootfs-20260422024341.qemuboot.conf
+
+    > core-image-minimal-qemuarm64.rootfs-20260422024341.spdx.tar.zst
+
+    > core-image-minimal-qemuarm64.rootfs-20260422024341.tar.bz2
+
+    > core-image-minimal-qemuarm64.rootfs-20260422024341.testdata.json
+
+    > Image--6.6.123+git0+17375dce17_2df2455c71-r0-qemuarm64-20260422024341.bin
+
+    > modules--6.6.123+git0+17375dce17_2df2455c71-r0-qemuarm64-20260422024341.tgz
