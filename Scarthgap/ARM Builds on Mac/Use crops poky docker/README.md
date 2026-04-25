@@ -1,4 +1,4 @@
-# Building a ARM Linux image on MAC using crops/poky docker
+# Building an ARM Linux image on MAC using crops/poky docker
 
 ## Setup the hardware?
 The build is going to be done on a MAC mini with Apple Silicon.
@@ -45,9 +45,9 @@ Clone the git code for poky that is labelled as scarthgap
 Once we have cloned the poky, change into the poky directory
 > cd /workdir/poky
 
-### Get the meta directory for arm
+### Get the meta directory for ARM
 
-By default poky does not have the support for arm hardware. So we need to get the meta layer meta-arm.
+By default poky does not have the support for ARM hardware. So we need to get the meta layer meta-arm.
 
 Clone the directory from git, and get the scarthgap build
 > git clone -b scarthgap --depth=1 git://git.yoctoproject.org/meta-arm
@@ -64,7 +64,7 @@ This has also setup bitbake with the path and directories needed.
     >> bblayers.conf - which layers are included in the BB. <br>
 	>> local.conf - Various settings including the default machine we are compiling for. Leaving the default as qemux86-64.
 
-### Add the bitbake layers for arm
+### Add the bitbake layers for ARM
 
 Get to the directory with the configurations
 > cd /workdir/poky/build/conf
