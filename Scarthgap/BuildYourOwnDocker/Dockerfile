@@ -1,10 +1,9 @@
-FROM ubuntu:26.04
+FROM ubuntu:24.04
 
-# install app dependencies
-# Install locales package
-RUN apt-get update && apt-get install -y locales
-# Generate the desired locale
-RUN locale-gen en_US.UTF-8
+# Install locales and set environment
+RUN apt-get update && apt-get install -y locales && \
+    locale-gen en_US.UTF-8 && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set environment variables
 ENV LANG=en_US.UTF-8 \
@@ -12,9 +11,9 @@ ENV LANG=en_US.UTF-8 \
     LC_ALL=en_US.UTF-8
 
 # Install packages for Yocto Scarthgap 
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     build-essential \
-    chrpath \ 
+    chrpath \
     cpio \
     debianutils \
     diffstat \
@@ -39,3 +38,5 @@ RUN apt-get install -y \
     xz-utils \
     zstd \
     && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace

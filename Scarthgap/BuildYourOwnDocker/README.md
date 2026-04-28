@@ -1,4 +1,4 @@
 # Building a docker contaimer for Yocto builds
 
 ## Build command
-docker build -t myyoctobuilder:1.0 .
+docker build -t bctyoctoscarthgapbuilder:1.0 .
