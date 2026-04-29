@@ -39,4 +39,12 @@ RUN apt-get update && apt-get install -y \
     zstd \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /workspace
+WORKDIR /workdir
+
+# Now lets create a new user called poky
+RUN useradd -m -s /bin/bash poky && \
+    usermod -aG sudo poky &&echo "poky ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+RUN chown -R poky:poky /workdir
+
+USER poky
