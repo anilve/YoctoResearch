@@ -1,3 +1,4 @@
+# Base the docker on an official ubuntu version 24.04
 FROM ubuntu:24.04
 
 # Install locales and set environment
