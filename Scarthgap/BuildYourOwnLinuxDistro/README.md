@@ -109,3 +109,20 @@ package_ipk
 
 #### Step 2: Build your image
 >bitbake core-minimal-image
+
+Build Configuration:
+BB_VERSION           = "2.8.1"
+BUILD_SYS            = "aarch64-linux"
+NATIVELSBSTRING      = "ubuntu-24.04"
+TARGET_SYS           = "aarch64-oe-linux"
+MACHINE              = "qemux86-64"
+DISTRO               = "bearcreeklinux"
+DISTRO_VERSION       = "nodistro.0"
+TUNE_FEATURES        = "aarch64 crc cortexa57"
+TARGET_FPU           = ""
+meta                 
+meta-poky            
+meta-yocto-bsp       = "scarthgap:44dcf08572ce391d7c0df4f8c7510af5e096baca"
+meta-arm-toolchain   
+meta-arm             = "scarthgap:a81c19915b5b9e71ed394032e9a50fd06919e1cd"
+meta-bearcreektech   = "scarthgap:44dcf08572ce391d7c0df4f8c7510af5e096baca"
