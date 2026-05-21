@@ -7,7 +7,7 @@
 
 ### Setup the docker container to do the work.
 
-> docker run -it --name my-poky-container -v /Users/anilve/code/YoctoSamples/simplepoky:/workdir bearcreektech/yocto-scarthgap:1.0 /bin/bash
+> docker run -it --name my-poky-container -v /Users/anilve/code/YoctoSamples/simplepoky:/workdir bearcreektech/yocto-scarthgap:1.1 /bin/bash
 
 > cd /workdir
 
@@ -108,7 +108,7 @@ package_ipk
 > export DISTRO="bearcreeklinux"
 
 #### Step 2: Build your image
->bitbake core-minimal-image
+> bitbake core-image-minimal
 
 Build Configuration:
 BB_VERSION           = "2.8.1"
