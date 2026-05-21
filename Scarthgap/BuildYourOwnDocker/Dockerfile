@@ -31,14 +31,19 @@ RUN apt-get update && apt-get install -y \
     python3-pexpect \
     python3-pip \
     python3-subunit \
-    socat \
+    screen \socat \
+    sudo \
     texinfo \
+    ufw \
     unzip \
     vim \
     wget \
     xz-utils \
     zstd \
     && rm -rf /var/lib/apt/lists/*
+
+# Disable port 4420. Fix for CVE-2026-23112
+RUN ufw deny in 4420/tcp 
 
 WORKDIR /workdir
 
