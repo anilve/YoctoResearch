@@ -126,3 +126,9 @@ meta-yocto-bsp       = "scarthgap:44dcf08572ce391d7c0df4f8c7510af5e096baca"
 meta-arm-toolchain   
 meta-arm             = "scarthgap:a81c19915b5b9e71ed394032e9a50fd06919e1cd"
 meta-bearcreektech   = "scarthgap:44dcf08572ce391d7c0df4f8c7510af5e096baca"
+
+
+
+Images can be found here
+
+$HOME/tempdir-glibc/deploy/images/qemuarm64
