@@ -17,7 +17,7 @@ Releases and Release Schedule
 
 Reporting bugs
 --------------
-E-mail tech@bearcreektech.comn with the error encountered and the steps to reproduce the issue.
+E-mail tech@bearcreektech.com with the error encountered and the steps to reproduce the issue.
 
 Maintainer(s)
 -------------

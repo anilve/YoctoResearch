@@ -35,7 +35,7 @@ However, if you prefer to use a standard Ubuntu Desktop image, that works perfec
 ## Building on a Mac Machine (Apple Silicon)
 I don't have an Intel-based Mac to test this on, so I’ve tested my ideas on an Apple Silicon machine instead.
 
-One key thing to remember about Apple Silicon is that it uses the same architecture as AMD processors. This means there are some slight differences compared to the Windows-based hardware steps.
+One key thing to remember about Apple Silicon is that it uses the same architecture as ARM64 processors. This means there are some slight differences compared to the Windows-based hardware steps.
 
 ### Virtual Machine for Mac
 
