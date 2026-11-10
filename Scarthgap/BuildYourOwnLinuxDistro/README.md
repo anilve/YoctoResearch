@@ -70,9 +70,7 @@ Update the thread and parallel make in local.conf
 
 ### Create a custom meta layer
 
-> cd /workdir/poky
-
-> mkdir meta-bearcreektech
+> mkdir /workdir/poky/meta-bearcreektech
 
 > mkdir /workdir/poky/meta-bearcreektech/conf
 
@@ -82,8 +80,9 @@ Create the local.conf file for the new meta layer
 
 ### Create a new distro configuration
 
-mkdir -p conf/distro/bearcreeklinux/conf
-cd conf/distro/bearcreeklinux/conf
+> mkdir -p /workdir/poky/build/conf/distro/bearcreeklinux/conf
+
+> cd conf/distro/bearcreeklinux/conf
 
 Key Points:
 - The distro.conf file resides in the conf/distro/ directory of your Yocto Project workspace.
