@@ -234,10 +234,10 @@ bitbake bearcreek-docker-image
 
 ### Step 8: Deploy and Run with Docker
 
-The build artifacts are generated under `/home/poky/tempdir/deploy/images/qemuarm64/`:
+The build artifacts are generated under `/home/poky/tempdir-glibc/deploy/images/qemuarm64/`:
 
 ```bash
-cd /home/poky/tempdir/deploy/images/qemuarm64/
+cd /home/poky/tempdir-glibc/deploy/images/qemuarm64/
 ls -lh *bearcreek-docker-image*
 ```
 
